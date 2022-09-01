@@ -3,14 +3,22 @@ package registries;
 import javafx.scene.canvas.GraphicsContext;
 
 public class GraphixContextRegistry {
-    protected static GraphicsContext currentGraphicsContext;
+    protected static GraphicsContext spritesGraphicsContext;
+    protected static GraphicsContext backgroundGraphicsContext;
 
-    public static void setGraphicsContext(GraphicsContext graphicsContext) {
-        currentGraphicsContext = graphicsContext;
+    public static void setBackgroundGraphicsContext(GraphicsContext backgroundGraphicsContext) {
+        GraphixContextRegistry.backgroundGraphicsContext = backgroundGraphicsContext;
     }
 
-    public static GraphicsContext getGraphicsContext() {
-        return currentGraphicsContext;
+    public static void setSpritesGraphicsContext(GraphicsContext spritesGraphicsContext) {
+        GraphixContextRegistry.spritesGraphicsContext = spritesGraphicsContext;
     }
 
+    public static GraphicsContext getBackgroundGraphicsContext() {
+        return backgroundGraphicsContext;
+    }
+
+    public static GraphicsContext getSpritesGraphicsContext() {
+        return spritesGraphicsContext;
+    }
 }

@@ -2,7 +2,9 @@ package controllers;
 
 import javafx.scene.control.Button;
 import registries.controls.ButtonSizeScale;
+import registries.sprites.SpritesSheet;
 import registries.variables.PixelSize;
+import services.ChrRender;
 import services.DrawGreedInCanvas;
 import services.DrawSprite;
 
@@ -16,25 +18,16 @@ public class ScaleButtonController {
             int currentScale = PixelSize.getSizePixel();
             currentScale--;
             PixelSize.setSizePixel(currentScale);
-            redrawAll();
+            ChrRender chrRender = new ChrRender();
+            chrRender.redrawAll();
         });
 
         buttonPlus.setOnAction(e -> {
             int currentScale = PixelSize.getSizePixel();
             currentScale++;
             PixelSize.setSizePixel(currentScale);
-            redrawAll();
+            ChrRender chrRender = new ChrRender();
+            chrRender.redrawAll();
         });
-    }
-
-    /**
-     * redraw all
-     */
-    public void redrawAll() {
-        DrawSprite drawSprite = new DrawSprite();
-        drawSprite.drawSpritesPageOne();
-
-        DrawGreedInCanvas drawGreedInCanvas = new DrawGreedInCanvas();
-        drawGreedInCanvas.drawGrid();
     }
 }
