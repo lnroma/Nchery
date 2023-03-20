@@ -15,4 +15,22 @@ public class DrawGreedInCanvas {
             gc.fillRect(0, x, 16 * 8 * PixelSize.getSizePixel(), 3);
         }
     }
+
+    public void drawGridNametable(GraphicsContext gc, int pixelSize) {
+        for (int xIndex = 0; xIndex < 32; xIndex++) {
+            int x = xIndex * pixelSize;
+            gc.setFill(Color.GREEN);
+            gc.fillRect(x, 0, 1, 32 * pixelSize);
+            gc.fillRect(0, x, 32 * pixelSize, 1);
+        }
+    }
+
+    public void drawGridAttributeTable(GraphicsContext gc) {
+        for (int xIndex = 0; xIndex < 16; xIndex++) {
+            int x = xIndex * 8;
+            gc.setFill(Color.BLUE);
+            gc.fillRect(x, 0, 3, 64 * 8);
+            gc.fillRect(0, x, 64 * 8, 3);
+        }
+    }
 }

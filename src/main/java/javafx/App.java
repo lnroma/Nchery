@@ -1,7 +1,9 @@
 package javafx;
 
 import controllers.ColorPickerController;
+import controllers.FileNewController;
 import controllers.FileOpenController;
+import controllers.NameTableOpenController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.ColorPicker;
@@ -24,16 +26,17 @@ import java.nio.file.Path;
 public class App extends Application {
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws Exception {
         StageRegistry.setStage(stage);
 
         MainWindow mainWindow = new MainWindow();
-        try {
+
+        //try {
             mainWindow.show();
             runControllers();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     public void runControllers() {
@@ -42,6 +45,12 @@ public class App extends Application {
 
         FileOpenController fileOpenController = new FileOpenController();
         fileOpenController.control();
+
+        FileNewController fileNewController = new FileNewController();
+        fileNewController.control();
+
+        NameTableOpenController nameTableOpenController = new NameTableOpenController();
+        nameTableOpenController.control();
     }
 
     public static void main(String[] args) {

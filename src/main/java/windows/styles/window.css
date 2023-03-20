@@ -1,0 +1,35 @@
+.window {
+   -fx-background:#0001100;
+}
+
+/ * Изменить цвет фона области панели TabPane * /
+.tab-pane {
+    -fx-background-color: #e6e6e6;
+}
+/ * Изменить цвет фона Tab * /
+.tab {
+    -fx-background-color: #333333;
+}
+/ * Изменить цвет фона верхней панели * /
+.tab-pane>*.tab-header-area>*.tab-header-background
+{
+    -fx-background-color: -fx-outer-border, -fx-text-box-border, #333333;
+}
+/ * Изменить цвет текста во вкладке * /
+.tab-label {
+    -fx-text-fill: #e6e6e6;
+}
+/ * Дочерний селектор, выберите вкладку дочернего элемента, когда выбрана вкладка * /
+.tab:selected .tab-label {
+    -fx-text-fill: #003333ff;
+}
+/ * Установить цвет фона при выборе вкладки * /
+.tab:selected {
+    -fx-background-color: #990000ff;
+}
+/ * Когда выбрана вкладка, выберите ее границу и измените стиль * /
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-radius: 0px;
+    -fx-border-width: 1px 1px 1px 1px;
+    -fx-border-color: #4d1a4dff;
+}

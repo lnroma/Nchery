@@ -8,6 +8,5 @@ public class MouseDraggedHandler implements EventHandler<MouseEvent> {
     public void handle(MouseEvent event) {
         double x = event.getX();
         double y = event.getY();
-
     }
 }

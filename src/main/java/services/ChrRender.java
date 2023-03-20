@@ -12,7 +12,7 @@ public class ChrRender {
         GraphicsContext gcSprites =  GraphixContextRegistry.getSpritesGraphicsContext();
         GraphicsContext gcBackground = GraphixContextRegistry.getBackgroundGraphicsContext();
 
-        DrawSprite drawSprite = new DrawSprite();
+        DrawPage drawSprite = new DrawPage();
         drawSprite.drawPage(SpritesSheet.getPageOneAnimation(), gcSprites);
         drawSprite.drawPage(SpritesSheet.getPageTwoBackground(), gcBackground);
 

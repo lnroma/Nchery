@@ -3,10 +3,7 @@ package controllers;
 import javafx.scene.control.ColorPicker;
 import registries.ColorChooserRegister;
 import registries.PaleteRegistry;
-import registries.sprites.SpritesSheet;
 import services.ChrRender;
-import services.DrawGreedInCanvas;
-import services.DrawSprite;
 
 public class ColorPickerController {
     public void control() {

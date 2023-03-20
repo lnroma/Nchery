@@ -2,49 +2,47 @@ package services;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import registries.GraphixContextRegistry;
 import registries.PaleteRegistry;
-import registries.sprites.SpritesSheet;
 import registries.variables.PixelSize;
 
 public class DrawSprite {
 
     private static final int size = PixelSize.getSizePixel();
 
-    public void drawPage(int[][][][] page, GraphicsContext graphicsContext) {
-        for (int x = 0; x < page.length; x++) {
-            for (int y = 0; y < page[x].length; y++) {
-                for (int xPoint = 0; xPoint < page[x][y].length; xPoint++) {
-                    for (int yPoint = 0; yPoint < page[x][y][xPoint].length; yPoint++) {
-                        int dataPoint = page[x][y][xPoint][yPoint];
-                        int absoluteX = x*8*size + xPoint*size;
-                        int absoluteY = y*8*size + yPoint*size;
+    public void drawSprite(int[][] sprite, GraphicsContext gc, int x, int y) {
+        this.draw(sprite, gc, x, y);
+    }
 
-                        Color pixelColor = getPixelColor(dataPoint);
-                        drawPixel(absoluteX, absoluteY, pixelColor, graphicsContext);
-                    }
-                }
+    public void drawSprite(int[][] sprite, GraphicsContext gc, int x, int y, int pixelSize) {
+        this.draw(sprite, gc, x, y, pixelSize);
+    }
+
+    public void drawSprite(int[][] sprite, GraphicsContext gc) {
+        this.draw(sprite, gc, 0, 0);
+    }
+
+    private void draw(int[][] sprite, GraphicsContext gc, int x, int y) {
+        draw(sprite, gc, x, y, size);
+    }
+
+    private void draw(int[][] sprite, GraphicsContext gc, int x, int y, int pixelSize) {
+        for (int xPoint = 0; xPoint < sprite.length; xPoint++) {
+            for (int yPoint = 0; yPoint < sprite[xPoint].length; yPoint++) {
+                int dataPoint = sprite[xPoint][yPoint];
+                int absoluteX = x*8*pixelSize + xPoint*pixelSize;
+                int absoluteY = y*8*pixelSize + yPoint*pixelSize;
+
+                Color pixelColor = getPixelColor(dataPoint);
+                drawPixel(absoluteX, absoluteY, pixelColor, gc);
             }
         }
     }
 
-    /**
-     *
-     * @param x
-     * @param y
-     * @param pixelColor
-     */
     private void drawPixel(int x, int y, Color pixelColor, GraphicsContext gc) {
-//        GraphicsContext gc = GraphixContextRegistry.getGraphicsContext();
         gc.setFill(pixelColor);
         gc.fillRect(x, y, size, size);
     }
 
-    /**
-     *
-     * @param dataPoint
-     * @return Color
-     */
     private Color getPixelColor(int dataPoint) {
         Color currentColor = PaleteRegistry.getColorOne();
         if (dataPoint == 1) {

@@ -4,28 +4,29 @@ import javafx.scene.control.MenuItem;
 import registries.FilePathRegistry;
 import registries.MenuRegister;
 import services.ChrRender;
+import services.NameTableReader;
 import services.ReadFileBytsAsString;
+import services.ReadNameTableFileReader;
 import windows.ChoseFileDialog;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
-public class FileOpenController {
+public class NameTableOpenController {
     public void control() {
-        MenuItem menuOpen = MenuRegister.getMenuOpen();
-
-        menuOpen.setOnAction(e -> {
+        MenuItem menuNameTableOpen = MenuRegister.getMenuOpenNametable();
+        menuNameTableOpen.setOnAction(e -> {
             ChoseFileDialog choseFileDialog = new ChoseFileDialog();
             choseFileDialog.show();
             Path path = FileSystems.getDefault().getPath(choseFileDialog.getOpenedFile().getPath());
 
-            FilePathRegistry.setPath(path);
-            ReadFileBytsAsString readFileBytsAsString = new ReadFileBytsAsString();
+            FilePathRegistry.setNameTablePath(path);
+            ReadNameTableFileReader readNameTableFileReader = new ReadNameTableFileReader();
             try {
-                readFileBytsAsString.read();
-                ChrRender chrRender = new ChrRender();
-                chrRender.redrawAll();
+                readNameTableFileReader.read();
+                NameTableReader nameTableReader = new NameTableReader();
+                nameTableReader.drawNameTable();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
